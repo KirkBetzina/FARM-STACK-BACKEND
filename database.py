@@ -2,6 +2,10 @@ from model import Todo
 
 import motor.motor_asyncio
 import os 
+import dns.resolver
+dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers=['8.8.8.8'] 
+
 client = motor.motor_asyncio.AsyncIOMotorClient(os.environ.get("DATABASE_URL"))
 database = client.TodoList
 collection = database.todo
