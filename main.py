@@ -32,7 +32,7 @@ async def get_todo():
     print("IMA  RESPONSE", response)
     return response
 
-@app.get("/api/todo{title}/", response_model=Todo)
+@app.get("/api/todo/{title}", response_model=Todo)
 async def get_todo_by_id(title):
     response = await fetch_one_todo(title)
     if response:
